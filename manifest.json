@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "boj_javaSubmit",
+    "description": "자바로 풀이를 제출할 때 패키지와 클래스 이름을 바꾸어줍니다.",
+    "version": "1.0",
+    "icons": {
+        "16": "icon.png",
+        "32": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "icon.png"
+    },
+    "content_scripts": [{
+        "matches": ["https://www.acmicpc.net/submit/*"],
+        "js": ["content_script.js"]
+    }],
+
+    "permissions": [
+        "activeTab"
+    ]
+}
