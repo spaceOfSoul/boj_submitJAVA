@@ -9,16 +9,18 @@
         "48": "icon.png",
         "128": "icon.png"
     },
-    "action": {
-        "default_popup": "index.html",
-        "default_icon": "icon.png"
-    },
     "content_scripts": [{
         "matches": ["https://www.acmicpc.net/submit/*"],
-        "js": ["content_script.js"]
+        "js": ["content_script.js"],
+        "run_at": "document_idle"
     }],
-
+    "background": {
+        "service_worker": "background.js"
+    },
     "permissions": [
-        "activeTab"
+        "*://*.acmicpc.net/submit/*",
+        "scripting",
+        "activeTab",
+        "tabs"
     ]
 }
