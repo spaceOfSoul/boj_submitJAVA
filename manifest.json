@@ -14,13 +14,7 @@
         "js": ["content_script.js"],
         "run_at": "document_idle"
     }],
-    "background": {
-        "service_worker": "background.js"
-    },
     "permissions": [
-        "*://*.acmicpc.net/submit/*",
-        "scripting",
-        "activeTab",
-        "tabs"
+        "activeTab"
     ]
 }

@@ -1,14 +1,16 @@
 const languege = document.querySelector("#language_chosen > a > span");
+const codemirror = document.getElementsByName("source");
 
 console.log('execute');
 
-function pasteCodeToCodeMirror(name, code) {
-    chrome.runtime.sendMessage({
-        type: 'pasteCodeToCodeMirror',
-        name: name,
-        code: code
-    });
+const pasteCodeToCodeMirror = new Function('name', 'code', `
+const codemirro_instance = OnlineJudgeCodeMirror.get(name);
+if (codemirro_instance) {
+    codemirro_instance.setValue(code);
+} else {
+    console.error('codemirror 인스턴스가 없습니다.');
 }
+`);
 
 document.addEventListener('paste', (e) => {
     e.preventDefault();
@@ -32,5 +34,6 @@ document.addEventListener('paste', (e) => {
         paste_txt += txt + "\n";
     }
     pasteCodeToCodeMirror("source", paste_txt);
-    console.log("?")
+    // codemirror.setValue("asd");
+    console.log(codemirror);
 });
